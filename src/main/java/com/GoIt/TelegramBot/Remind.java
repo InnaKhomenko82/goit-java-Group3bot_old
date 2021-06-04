@@ -29,4 +29,5 @@ private static final String CREDENTIALS_FILE = "/credential.json";
                 .createScoped(Lists.newArrayList(Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY)));
         return new HttpCredentialsAdapter(credentials);
     }
+    private String ggg;
 }
