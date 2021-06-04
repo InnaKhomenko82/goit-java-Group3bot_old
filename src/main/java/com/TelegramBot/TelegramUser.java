@@ -3,6 +3,7 @@ import lombok.Data;
 
 
 @Data
+
 public class TelegramUser {
     private String name;
     private String surName;
@@ -33,7 +34,7 @@ public class TelegramUser {
     public void setSurName(String surName) {
         this.surName = surName;
     }
-
+    
 
     public int getAge() {
         return age;
