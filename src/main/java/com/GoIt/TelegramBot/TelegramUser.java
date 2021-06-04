@@ -2,7 +2,9 @@ package com.GoIt.TelegramBot;
 
 import lombok.Data;
 
+
 @Data
+
 public class TelegramUser {
     private String name;
     private String surName;
