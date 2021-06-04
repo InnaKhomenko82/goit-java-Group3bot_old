@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.TelegramBot;
 
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -10,3 +11,7 @@ public class TelegramBot {
     telegramBotsApi.registerBot(new MessageBot());
 }
 }
+=======
+package com.TelegramBot;public class TelegramBot {
+}
+>>>>>>> 81c17fd (refreshDev)

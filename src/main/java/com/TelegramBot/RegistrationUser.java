@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.TelegramBot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -156,3 +157,7 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
 //        replyKeyboardMarkup.setKeyboard(keyboard);
     }
 }
+=======
+package com.TelegramBot;public class RegistrationUser {
+}
+>>>>>>> 81c17fd (refreshDev)

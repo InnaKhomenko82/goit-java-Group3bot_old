@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.TelegramBot;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -18,3 +19,7 @@ public class MessageBot extends RegistrationUser{
         userRegistration(update);
     }
 }
+=======
+package com.TelegramBot;public class MessageBot {
+}
+>>>>>>> 81c17fd (refreshDev)

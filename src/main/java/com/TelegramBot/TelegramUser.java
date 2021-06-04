@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.TelegramBot;
 import lombok.Data;
 
@@ -52,3 +53,7 @@ public class TelegramUser {
         this.id = id;
     }
 }
+=======
+package com.TelegramBot;public class TelegramUser {
+}
+>>>>>>> 81c17fd (refreshDev)
