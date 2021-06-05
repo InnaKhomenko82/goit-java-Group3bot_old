@@ -72,17 +72,17 @@ public class GoogleApiToJson {
             String r = (String) row.get(0);
             String r1 = (String) row.get(1);
             String r2 = (String) row.get(2);
-            String allR = "\nВопрос: " + r + "\nОтвет: " + r1 + "\nВидео: " + r2 + "\n";
-            String all2 = "Вопрос: " + r + "Ответ: " + r1 + "Видео: " + r2;
+            String allR = "\nВопрос: " + r + " \nОтвет: " + r1 + " \nВидео: " + r2 + "\n";
+            String all2 = " Вопрос: " + r + " Ответ: " + r1 + " Видео: " + r2;
             rows.add(row);
             values2.add(all2);
 
             //System.out.printf("Вопрос: %s \n Ответ: %s \n Видео: %s \n\n", row.get(0), row.get(1), row.get(2));
         }
         // System.out.println(range);
-        WriteToJson.Writer1(rows);
-        WriteToJson.Writer2(values2);
-        WriteToJson.Writer3(values);
+        WriteToJson.Writer1ToArray(rows);
+        WriteToJson.Writer2ToString(values2);
+        WriteToJson.Writer3ToObject(values);
         //ReadToJson.Read1();
     }
 
