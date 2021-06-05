@@ -14,13 +14,28 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class RegistrationUser extends TelegramLongPollingBot {
+    TrainingUser trainingUser = new TrainingUser();
+    KeyBoards keyBoard = new KeyBoards();
     Map<Long, TelegramUser> userMap = new HashMap<>();
 
-    private void sendMessage(long chatId, String text) {
+
+    protected void sendMessageWithMarkup(long chatId, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(Long.toString(chatId));
         sendMessage.setText(text);
-        firstKeyboardsMarkup(sendMessage);
+        sendMessage.setReplyMarkup(keyBoard.keyBoardsAfterChoiceTraining());
+        try {
+            sendApiMethod(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void sendMessage(long chatId, String text) {
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(Long.toString(chatId));
+        sendMessage.setText(text);
+        keyBoard.keyboardForRegistration(sendMessage);
         try {
             sendApiMethod(sendMessage);
         } catch (TelegramApiException e) {
@@ -43,7 +58,7 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(Long.toString(chatId));
         sendMessage.setText(text);
-        keyboardsMarkup(sendMessage);
+        keyBoard.keyBoardsForChoosingTraining(sendMessage);
         try {
             sendApiMethod(sendMessage);
         } catch (TelegramApiException e) {
@@ -55,7 +70,7 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
         Long chatId = update.getMessage().getChatId();
         sendMessage(chatId, "Привет!\n" +
                 "\n" +
-                "Я Telegram бот, и я помогу подготовиться к собеседованию по JavaScrip");
+                "Я Telegram бот, и я помогу подготовиться к собеседованию по JavaScrip.");
         sendMessage(chatId, "Вижу, ты новенький. Для начала нажми на кнопку Зарегистрироваться, чтобы я мог сохранять твой прогресс.\n" +
                 "\n" +
                 "Если не видишь кнопки - нажми на (::), чтобы открыть клавиатуру");
@@ -75,6 +90,9 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
             case "Зарегистрироваться":
                 message(chatId, "Пожалуйста, введите ваш email.");
                 break;
+            case "<--- JavaScript React --->":
+                trainingUser.userTraining(update);
+
         }
         if (getValidEmail(update)) {
             getTelegramUser(update);
@@ -82,23 +100,6 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
             keyboardMessage(chatId, "Выберите, что вас интересует.");
 
         }
-    }
-
-    private void firstKeyboardsMarkup(SendMessage sendMessage) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setOneTimeKeyboard(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setSelective(true);
-
-        KeyboardRow keyboardButtons = new KeyboardRow();
-        keyboardButtons.add("Зарегистрироваться");
-
-        List<KeyboardRow> keyboardRows = new ArrayList<>();
-        keyboardRows.add(keyboardButtons);
-
-        replyKeyboardMarkup.setKeyboard(keyboardRows);
     }
 
     private void getTelegramUser(Update update) {
@@ -112,47 +113,19 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
     private boolean getValidEmail(Update update) {
         String text = update.getMessage().getText();
         return text.matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}$");
-
-
     }
+     class TrainingUser{
 
-    private void keyboardsMarkup(SendMessage sendMessage) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+         protected void userTraining(Update update) {
+             Long chatId = update.getMessage().getChatId();
+             String returnMessage = update.getMessage().getText();
+             switch (returnMessage) {
+                 case "<--- HTML/CSS --->":
+                     break;
+                 case "<--- JavaScript React --->":
+                     sendMessageWithMarkup(chatId,"Вы выбрали " + returnMessage);
 
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
-        replyKeyboardMarkup.setResizeKeyboard(false);
-        replyKeyboardMarkup.setSelective(true);
-
-        KeyboardRow keyboardButtons = new KeyboardRow();
-        keyboardButtons.add("Вопросы/Ответы\n-текстовый вариант");
-        keyboardButtons.add("Вопросы/Ответы\n-видео вариант");
-        keyboardButtons.add("Настроить напоминание");
-        keyboardButtons.add("Просмотреть погоду,\nвсегда есть о чем поговорить:)");
-
-        List<KeyboardRow> keyboardRows = new ArrayList<>();
-        keyboardRows.add(keyboardButtons);
-
-        replyKeyboardMarkup.setKeyboard(keyboardRows);
-// Предлагаю клавиатуру немного подправить, чтобы каждую клавишу было хорошо видно и удобнее)) P.S.Женя
-        // Ниже код с кнопками, можно добавить кнопки как в 1 строку так и с новой строки
-
-
-//        List<KeyboardRow> keyboard = new ArrayList<>();
-//
-//        KeyboardRow keyboardFirstRow = new KeyboardRow();
-//        keyboardFirstRow.add(new KeyboardButton("Первая строка"));  // Уроки(Вопрос/Ответ)
-//
-//        KeyboardRow keyboardSecondRow = new KeyboardRow();
-//        keyboardSecondRow.add(new KeyboardButton("Вторая строка"));  // Уроки(Видео)
-//
-//        KeyboardRow keyboardThreeRow = new KeyboardRow();
-//        keyboardThreeRow.add(new KeyboardButton("Третья строка"));   //Настроить напоминание
-//
-//        keyboard.add(keyboardFirstRow);
-//        keyboard.add(keyboardSecondRow);
-//        keyboard.add(keyboardThreeRow);
-//
-//        replyKeyboardMarkup.setKeyboard(keyboard);
+             }
+         }
     }
 }
