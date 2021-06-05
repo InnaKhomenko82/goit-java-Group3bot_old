@@ -4,6 +4,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -133,5 +134,25 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
         keyboardRows.add(keyboardButtons);
 
         replyKeyboardMarkup.setKeyboard(keyboardRows);
+// Предлагаю клавиатуру немного подправить, чтобы каждую клавишу было хорошо видно и удобнее)) P.S.Женя
+        // Ниже код с кнопками, можно добавить кнопки как в 1 строку так и с новой строки
+
+
+//        List<KeyboardRow> keyboard = new ArrayList<>();
+//
+//        KeyboardRow keyboardFirstRow = new KeyboardRow();
+//        keyboardFirstRow.add(new KeyboardButton("Первая строка"));  // Уроки(Вопрос/Ответ)
+//
+//        KeyboardRow keyboardSecondRow = new KeyboardRow();
+//        keyboardSecondRow.add(new KeyboardButton("Вторая строка"));  // Уроки(Видео)
+//
+//        KeyboardRow keyboardThreeRow = new KeyboardRow();
+//        keyboardThreeRow.add(new KeyboardButton("Третья строка"));   //Настроить напоминание
+//
+//        keyboard.add(keyboardFirstRow);
+//        keyboard.add(keyboardSecondRow);
+//        keyboard.add(keyboardThreeRow);
+//
+//        replyKeyboardMarkup.setKeyboard(keyboard);
     }
 }
