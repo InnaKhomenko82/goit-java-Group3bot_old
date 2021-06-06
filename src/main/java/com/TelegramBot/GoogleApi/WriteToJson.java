@@ -28,9 +28,6 @@ public class WriteToJson extends GoogleApiToJson {
         writer3.write(String.valueOf(json3));
         //System.out.println(json);
 
-
-
-
         writer.flush();
         writer.close();
 
