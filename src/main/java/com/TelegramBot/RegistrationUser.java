@@ -61,7 +61,7 @@ public abstract class RegistrationUser extends TelegramLongPollingBot {
                 "Если не видишь кнопки - нажми на (::), чтобы открыть клавиатуру");
     }
 
-    protected void userRegistration(Update update) {
+    void userRegistration(Update update) {
         Long chatId = update.getMessage().getChatId();
         String returnMessage = update.getMessage().getText();
         switch (returnMessage) {

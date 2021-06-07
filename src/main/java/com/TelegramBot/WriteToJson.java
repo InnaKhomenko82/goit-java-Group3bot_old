@@ -1,4 +1,4 @@
-package com.TelegramBot.GoogleApi;
+package com.TelegramBot;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteToJson extends GoogleApiToJson {
+public class WriteToJson {
 
     public static void Writer1ToArray(Object responseValues) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
