@@ -1,2 +1,3 @@
-package com.TelegramBot;public class TelegramConstants {
+package com.TelegramBot;
+public class TelegramConstants {
 }
