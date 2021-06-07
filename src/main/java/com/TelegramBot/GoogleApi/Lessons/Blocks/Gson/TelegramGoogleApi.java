@@ -1,4 +1,4 @@
-package com.GoIt.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
+package com.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -31,23 +31,22 @@ public class TelegramGoogleApi {
     public static ValueRange response5;
     public static int numberBlock;
     public static int numberLesson;
-
-    static List<Object> values2 = new ArrayList<>();
-    static List<Object> rows = new ArrayList<>();
-    static List<Object> responseValues = new ArrayList<>();
-    static List<Object> row = new ArrayList<>();
-
     static String blockName;
     static String blockName1;
-
-    static List<String> blocksNames = new ArrayList<>();
-    static List<Object> question = new ArrayList<>();
-    static List<Object> ask = new ArrayList<>();
-    static List<Object> videoURL = new ArrayList<>();
-    static List<Object> lessons = new ArrayList<>();
     public static String spreadSheetId;
     public static Spreadsheet spreadsheetMetadata;
-    static List<Sheet> sheets = new ArrayList<>();
+
+    public static List<Object> values2 = new ArrayList<>();
+    public static List<Object> rows = new ArrayList<>();
+    public static List<Object> responseValues = new ArrayList<>();
+    public static List<Object> row = new ArrayList<>();
+
+    public static List<String> blocksNames = new ArrayList<>();
+    public static List<Object> question = new ArrayList<>();
+    public static List<Object> ask = new ArrayList<>();
+    public static List<Object> videoURL = new ArrayList<>();
+    public static List<Object> lessons = new ArrayList<>();
+    public static List<Sheet> sheets = new ArrayList<>();
 
     public static void mainGoogle() throws GeneralSecurityException, IOException {
         final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -63,9 +62,9 @@ public class TelegramGoogleApi {
         // TelegramLessons.getLessons(response5, responseValues);
         TelegramBlockWithLessons.getAll(sheets, spreadSheetId, service);
 
-        WriteToJson.Writer2ToString(row);
-        WriteToJson.Writer1ToArray(responseValues);
-        WriteToJson.Writer3ToObject(values2);
+//        WriteToJson.Writer2ToString(row);
+//        WriteToJson.Writer1ToArray(responseValues);
+//        WriteToJson.Writer3ToObject(values2);
 
     }
 
@@ -100,7 +99,7 @@ public class TelegramGoogleApi {
         return (String) lessons.get(TelegramGoogleApi.numberLesson);
     }
 
-    public static void getBlock(int numberBlock) throws IOException, GeneralSecurityException {
+    public static void getBlock(int numberBlock) {
         TelegramGoogleApi.numberBlock = numberBlock - 1;
         System.out.println(blocksNames.get(TelegramGoogleApi.numberBlock));
         System.out.println(values2.get(TelegramGoogleApi.numberBlock));

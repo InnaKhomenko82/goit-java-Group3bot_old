@@ -1,4 +1,4 @@
-package com.GoIt.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
+package com.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
