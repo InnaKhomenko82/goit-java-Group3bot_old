@@ -1,4 +1,4 @@
-package com.TelegramBot.GoogleApiLessonsBlocksGson;
+package com.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriteToJson {
+
     public static void Writer1ToArray(Object responseValues) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(responseValues);

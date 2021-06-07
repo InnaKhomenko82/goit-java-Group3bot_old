@@ -1,6 +1,4 @@
-package com.TelegramBot.GoogleApiLessonsBlocksGson;
-
-
+package com.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.Sheet;
 
@@ -15,18 +13,17 @@ public class TelegramBlockWithLessons extends TelegramGoogleApi {
                 numberBlock = j +1;
             }
             Sheet sheet = sheets.get(numberBlock-1);
-            blockName1 = sheet
+            TelegramGoogleApi.blockName1 = sheet
                     .getProperties()
                     .getTitle();
-            blocksNames.add(blockName1);// blockName - назание Гугл-Листа
+            TelegramGoogleApi.blocksNames.add(TelegramGoogleApi.blockName1);// blockName - назание Гугл-Листа
             //blocksNames.get(0)-номер листа//!A1:A-название блока обучения
-            response5 = service
+            TelegramGoogleApi.response5 = service
                     .spreadsheets()
                     .values()
-                    .get(spreadSheetId, blocksNames.get(numberBlock-1)) //blocksNames.get(0)-номер лисат//!A1:A-название блока обучения
+                    .get(spreadSheetId, TelegramGoogleApi.blocksNames.get(numberBlock-1)) //blocksNames.get(0)-номер лисат//!A1:A-название блока обучения
                     .execute();
-            values2.add(response5);
-
+            TelegramGoogleApi.values2.add(TelegramGoogleApi.response5);
 
             List<List<Object>> response5Values = response5.getValues();
             int count = 1;
@@ -53,7 +50,7 @@ public class TelegramBlockWithLessons extends TelegramGoogleApi {
                 //String all2 = " Вопрос: " + r + " Ответ: " + r1 + " Видео: " + r2;
             }
 
-//                  break;
+            break;
 
         }
     }

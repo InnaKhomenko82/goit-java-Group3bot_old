@@ -1,4 +1,4 @@
-package com.TelegramBot.GoogleApiLessonsBlocksGson;
+package com.TelegramBot.GoogleApi.Lessons.Blocks.Gson;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.Sheet;
@@ -6,10 +6,9 @@ import com.google.api.services.sheets.v4.model.Sheet;
 import java.io.IOException;
 import java.util.List;
 
+public class TelegramStudyBlocks extends TelegramGoogleApi {
 
-    public class TelegramStudyBlocks extends TelegramGoogleApi {
-
-    public static void getBlocks(List<Sheet> sheets, String spreadSheetId, Sheets service, int numberBlock) throws  IOException {
+    public static void getBlocks(List<Sheet> sheets, String spreadSheetId, Sheets service, int numberBlock) throws IOException {
         for (int j = 0; j < sheets.size(); j++) {
             if (numberBlock == 0) {
                 numberBlock = j+1;
